@@ -48,14 +48,19 @@ def format_tweets_as_df(tweets, start_date, end_date):
 if __name__ == '__main__':
     num_args = len(sys.argv)
 
-    if num_args != 2:
-        print("usage: python " + sys.argv[0] + " <query>")
+    if num_args != 4:
+        print("usage: python " + sys.argv[0] + " <query>" + " <start date>"
+              + " < end date>")
         sys.exit(0)
 
     query = sys.argv[1]
     limit_per_day = 10
-    start_date = date(2018, 2, 24)
-    end_date = date(2018, 3, 9)
+    sd = sys.argv[2].split('-')
+    sd_ints = list(map(int, sd))
+    start_date = date(sd_ints[0], sd_ints[1], sd_ints[2])
+    ed = sys.argv[3].split('-')
+    ed_ints = list(map(int, ed))
+    end_date = date(ed_ints[0], ed_ints[1], ed_ints[2])
 
     tweets = twitter_query(query, limit_per_day, start_date, end_date)
     print('Finished query!')

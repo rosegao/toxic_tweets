@@ -15,10 +15,8 @@ def clean_df(input_filename):
                               'retweets', 'text', 'url', 'user', 'month'])
     # drop NAs
     df = df.dropna()
-
     # drop duplicates
     df = df.drop_duplicates()
-
     return df
 
 
