@@ -102,6 +102,8 @@ if __name__ == '__main__':
     Trains models on kaggle toxic comment dataset (https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data).
     Builds and saves 2 vectorizers and 6 toxicity models.
     '''
+    from build_toxicity_models import LemmaTokenizer
+
     filename = 'kaggle_data/train.csv'
     toxic_data = pd.read_csv(filename)
 
