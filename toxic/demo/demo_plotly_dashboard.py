@@ -22,32 +22,32 @@ def df_processing(filename):
 
 def create_traces(df):
     trace1 = go.Scatter(x=df['date'], y=df['toxic'], marker={'color': 'blue', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='1st Trace')
+                        mode="markers", name='1st Trace')
     data = go.Data([trace1])
     url_1 = py.plot(data, filename='first_plot', sharing='public', auto_open=False)
 
     trace2 = go.Scatter(x=df['date'], y=df['severe_toxic'], marker={'color': 'purple', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='2nd Trace')
+                        mode="markers", name='2nd Trace')
     data = go.Data([trace2])
     url_2 = py.plot(data, filename='second_plot', sharing='public', auto_open=False)
 
     trace3 = go.Scatter(x=df['date'], y=df['obscene'], marker={'color': 'orange', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='3rd Trace')
+                        mode="markers", name='3rd Trace')
     data = go.Data([trace3])
     url_3 = py.plot(data, filename='third_plot', sharing='public', auto_open=False)
 
     trace4 = go.Scatter(x=df['date'], y=df['threat'], marker={'color': 'green', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='4th Trace')
+                        mode="markers", name='4th Trace')
     data = go.Data([trace4])
     url_4 = py.plot(data, filename='fourth_plot', sharing='public', auto_open=False)
 
     trace5 = go.Scatter(x=df['date'], y=df['insult'], marker={'color': 'red', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='5th Trace')
+                        mode="markers", name='5th Trace')
     data = go.Data([trace5])
     url_5 = py.plot(data, filename='fifth_plot', sharing='public', auto_open=False)
 
     trace6 = go.Scatter(x=df['date'], y=df['identity_hate'], marker={'color': 'blue', 'symbol': 104, 'size': "5"},
-                        mode="markers+lines", name='6th Trace')
+                        mode="markers", name='6th Trace')
     data = go.Data([trace6])
     url_6 = py.plot(data, filename='sixth_plot', sharing='public', auto_open=False)
 
