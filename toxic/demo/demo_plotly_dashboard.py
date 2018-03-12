@@ -12,8 +12,7 @@ import plotly
 import plotly.graph_objs as go
 import plotly.plotly as py
 import plotly.dashboard_objs as dashboard
-import IPython.display
-from IPython.display import Image
+
 
 def df_processing(filename):
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
