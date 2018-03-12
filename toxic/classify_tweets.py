@@ -82,7 +82,7 @@ if __name__ == '__main__':
     num_args = len(sys.argv)
 
     if num_args != 3:
-        print("usage: python " + sys.argv[0] + " <raw tweets csv>" +
+        print("usage: python " + sys.argv[0] + " <scraped tweets csv>" +
               " <export filename>")
         sys.exit(0)
 
