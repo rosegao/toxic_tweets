@@ -1,5 +1,6 @@
-# Demo: Classify Tweets
-# Rose Gao
+# Project: Toxic Tweets
+# Filename: demo_classify_tweets.py
+# Author: Rose Gao
 
 import sys
 import pandas as pd

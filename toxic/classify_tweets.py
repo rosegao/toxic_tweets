@@ -1,9 +1,11 @@
-# Demo: Classify Tweets
-# Rose Gao
+# Project: Toxic Tweets
+# Filename: classify_tweets.py
+# Author: Rose Gao
 
 import sys
 import pandas as pd
 import pickle
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from scipy.sparse import hstack

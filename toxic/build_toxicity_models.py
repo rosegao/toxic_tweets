@@ -1,5 +1,6 @@
-# Author: Rose Gao
 # Project: Toxic Tweets
+# Filename: build_toxicity_models.py
+# Author: Rose Gao
 
 import pandas as pd
 import numpy as np
@@ -24,8 +25,12 @@ class LemmaTokenizer(object):
         return [self.wnl.lemmatize(t) for t in word_tokenize(doc)]
 
 
-# create TFIDF vectorizers
 def create_vectorizers(toxic_data):
+    '''
+    Creates word and char TFIDF vectorizers
+    Inputs: toxic_data: train set
+    Returns: no explicit return; creates 2 pickled vectorizer files
+    '''
     all_text = toxic_data['comment_text']
 
     word_vectorizer = TfidfVectorizer(
@@ -39,8 +44,9 @@ def create_vectorizers(toxic_data):
         max_features=10000)
     word_vectorizer.fit(all_text)
 
-    # save vectorizer into a pickle file
-    pickle.dump(word_vectorizer, open('toxicity_models/word_vectorizer.pickle', 'wb'))
+    # save word vectorizer into a pickle file
+    pickle.dump(word_vectorizer, open(
+        'toxicity_models/word_vectorizer.pickle', 'wb'))
 
     char_vectorizer = TfidfVectorizer(
         sublinear_tf=True,
@@ -51,19 +57,28 @@ def create_vectorizers(toxic_data):
         max_features=50000)
     char_vectorizer.fit(all_text)
 
-    # save vectorizer into a pickle file
-    pickle.dump(char_vectorizer, open('toxicity_models/char_vectorizer.pickle', 'wb'))
+    # save char vectorizer into a pickle file
+    pickle.dump(char_vectorizer, open(
+        'toxicity_models/char_vectorizer.pickle', 'wb'))
 
 
 def feature_creation(toxic_data):
     '''
-    Create train and test features
+    Creates train and test features
+    Inputs: toxic_data: train set
+    Returns: features derived from train set
     '''
-    word_vectorizer = pickle.load(open('toxicity_models/word_vectorizer.pickle', 'rb'))
-    char_vectorizer = pickle.load(open('toxicity_models/char_vectorizer.pickle', 'rb'))
+    # load vectorizers
+    word_vectorizer = pickle.load(open(
+        'toxicity_models/word_vectorizer.pickle', 'rb'))
+    char_vectorizer = pickle.load(open(
+        'toxicity_models/char_vectorizer.pickle', 'rb'))
 
+    # create word and char features
     word_features = word_vectorizer.transform(toxic_data['comment_text'])
     char_features = char_vectorizer.transform(toxic_data['comment_text'])
+
+    # stack word and char features
     features = hstack([char_features, word_features])
 
     return features
@@ -71,7 +86,11 @@ def feature_creation(toxic_data):
 
 def model_creation(toxic_data, features):
     '''
-    Create models and measure cross validation scores and pickle models.
+    Creates models, measures their cross validation scores, and pickles them.
+    Inputs:
+        toxic_data: train set
+        features: features derived from train set
+    Returns: no explicit return; creates 6 pickle files for 6 toxicity models
     '''
     target_columns = list(toxic_data.columns)[2:]
 
@@ -82,7 +101,9 @@ def model_creation(toxic_data, features):
         target = toxic_data[col]
         classifier = LogisticRegression(C=20, class_weight='balanced')
 
-        accuracy = np.mean(cross_val_score(classifier, features, target, cv=3, scoring='roc_auc'))
+        # calculate cross validation score for model
+        accuracy = np.mean(cross_val_score(classifier, features, target,
+                                           cv=3, scoring='roc_auc'))
         scores.append(accuracy)
         print('Accuracy score for {} is {}'.format(col, accuracy))
 
@@ -90,12 +111,14 @@ def model_creation(toxic_data, features):
         print('Building model for column: {}'.format(col))
         models[col] = classifier
 
+    # print mean cross validation score
     print('Total accuracy score is {}'.format(np.mean(scores)))
 
     # save models into pickle files
     for col in target_columns:
         filename = 'toxicity_models/model_{}.sav'.format(col)
         pickle.dump(models[col], open(filename, 'wb'))
+
 
 if __name__ == '__main__':
     '''

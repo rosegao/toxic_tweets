@@ -1,5 +1,6 @@
-# Demo: Scrape Tweets
-# Rose Gao
+# Project: Toxic Tweets
+# Filename: demo_scrape_tweets.py
+# Author: Rose Gao
 
 import sys
 from twitterscraper import query_tweets

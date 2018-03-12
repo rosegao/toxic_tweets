@@ -1,5 +1,6 @@
-# Demo: Plotly Dashboard
-# Rose Gao
+# Project: Toxic Tweets
+# Filename: demo_plotly_dashboard.py
+# Author: Rose Gao
 
 import sys
 import pandas as pd
