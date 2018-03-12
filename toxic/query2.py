@@ -159,10 +159,6 @@ def clean_and_merge(df1, df2, start_date, end_date):
 	return df
 
 
-# def write_to_csv(filename, df):
-#     df.to_csv(filename, header=False)
-
-
 def go(query_term, limit_per_day, starting_date, ending_date, filename):
 	date_tup = write_date(starting_date, ending_date)
 	start_date, end_date = date_tup[0:2]
