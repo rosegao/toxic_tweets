@@ -33,8 +33,8 @@ def classify_tweets(df):
     '''
 
     # Load vectorizers
-    word_vectorizer = pickle.load(open('../toxicity_models/word_vectorizer.pickle', 'rb'))
-    char_vectorizer = pickle.load(open('../toxicity_models/char_vectorizer.pickle', 'rb'))
+    word_vectorizer = pickle.load(open('toxicity_models/word_vectorizer.pickle', 'rb'))
+    char_vectorizer = pickle.load(open('toxicity_models/char_vectorizer.pickle', 'rb'))
 
     # Vectorize tweets
     tweet_word_features = word_vectorizer.transform(df['text'])
@@ -47,7 +47,7 @@ def classify_tweets(df):
                       'insult', 'identity_hate']
     for col in target_columns:
         loaded_models[col] = pickle.load(open(
-            '../toxicity_models/model_{}.sav'.format(col), 'rb'))
+            'toxicity_models/model_{}.sav'.format(col), 'rb'))
 
     # Run models and fill new target columns
     for col in target_columns:
@@ -61,7 +61,7 @@ def post_processing_and_export(df, export_filename):
     Create 3 more columns: day, classification, max value
     Inputs:
         df: DataFrame of classified tweets
-        export_filenmae: name of the file to be created
+        export_filename: name of the file to be created
     Returns: no explicit return; creates a CSV from df
     '''
     # Create 'day' column
