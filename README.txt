@@ -3,10 +3,13 @@
 Computer Science with Applications 2 Project
 Team: Rose Gao, Andrea Koch, Ian Lyons
 
-Project Objective: Detect toxicity, insult, obscenity, and identity hate in tweets. Visualize and track trends of toxicity for topics (e.g. #ReleaseTheMemo) and towards individuals (e.g. Clinton) throughout 2016-2018.
+Project Objective: Detect toxicity, insult, obscenity, and identity hate in tweets. 
+Visualize and track trends of toxicity for topics (e.g. abortion) and towards individuals (e.g. Clinton) throughout 2016-2018.
 
 Main Folders:
-1. archive: includes old project (fake news tweets detection), temporary Jupyter notebooks, and scraped and classified data that we did not use for trends/visuals
+1. archive: includes old project (fake news tweets detection), temporary Jupyter notebooks, 
+and scraped and classified data that we did not use for trends/visuals.
+
 2. toxic: includes final project
 - Folders:
   - classified_tweets: stores classified tweets (CSV files)
