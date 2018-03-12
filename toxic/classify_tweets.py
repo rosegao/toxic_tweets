@@ -16,7 +16,7 @@ def clean_df(input_filename):
     Returns: df: DataFrame of pre-processed tweets
     '''
     df = pd.read_csv(input_filename, encoding="ISO-8859-1",
-                     usecols=['date', 'fullname', 'id', 'likes', 'replies',
+                     names=['date', 'fullname', 'id', 'likes', 'replies',
                               'retweets', 'text', 'url', 'user', 'month'])
     # drop NAs
     df = df.dropna()
