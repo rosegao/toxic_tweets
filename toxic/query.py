@@ -53,7 +53,7 @@ def twitter_query_over_time(query_term, limit_per_day, starting_date, ending_dat
 
 
 def extract_tweets(queries_tup):
-	queries, start_date, end_date = queries_tup
+    queries, start_date, end_date = queries_tup
     tweets = []
     for tweet in queries:
         tweets.append({'date': tweet.timestamp, 'text': tweet.text, 
@@ -66,7 +66,7 @@ def extract_tweets(queries_tup):
 
 
 def format_tweets_as_df(tweets_tup):
-	tweets, start_date, end_date = tweets_tup
+    tweets, start_date, end_date = tweets_tup
     df = pd.DataFrame(tweets) 
     df['month'] = df['date'].apply(lambda x : date(x.year, x.month, 1))
     df = df.dropna()
