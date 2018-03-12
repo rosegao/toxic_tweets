@@ -32,7 +32,7 @@ def write_date(search_date):
 	'''
 	if len(search_date) != 10:
 		formatted = print('{}\n{}'.format("INVALID DATE FORMAT",
-			                            "Input date str as 'MM/DD/YYYY'"))
+										"Input date str as 'MM/DD/YYYY'"))
 	else:
 		month = int(search_date[:2])
 		day = int(search_date[3:5])
@@ -52,7 +52,7 @@ def write_date(search_date):
 
 def twitter_query_over_time(query_term, limit_per_day, starting_date, 
 														ending_date):
-    '''
+	'''
 	Scrapes tweets and writes them into a dataframe.
 
 	Inputs:
@@ -64,25 +64,25 @@ def twitter_query_over_time(query_term, limit_per_day, starting_date,
 		queries_tup (tuple): contains queries (list of results), 
 							 start_date (datetime.date object), 
 							 end_date (datetime.date object)
-    '''
-    start_date = write_date(starting_date)
-    end_date = write_date(ending_date)
-    if start_date > end_date:
-        error_statement = "Error:  start date after end date"
-        return error_statement
-    else:
-	    dates = ([start_date + timedelta(days = x) for x 
-	    		  in range((end_date - start_date).days + 1)])
-	    queries = []    
-    	# enumerate through all pairs of dates until the 
-    	# penultimate and last day pair:
-	    for i, date in enumerate(dates[:-1]):
-	        query = query_tweets(query = query_term, limit = limit_per_day, 
-	                             begindate = dates[i], enddate = dates[i+1], 
-	                             poolsize=20, lang='en')
-	        queries.extend(query)
-	    queries_tup = (queries, start_date, end_date)
-	    return queries_tup
+	'''
+	start_date = write_date(starting_date)
+	end_date = write_date(ending_date)
+	if start_date > end_date:
+		error_statement = "Error:  start date after end date"
+		return error_statement
+	else:
+		dates = ([start_date + timedelta(days = x) for x 
+				  in range((end_date - start_date).days + 1)])
+		queries = []    
+		# enumerate through all pairs of dates until the 
+		# penultimate and last day pair:
+		for i, date in enumerate(dates[:-1]):
+			query = query_tweets(query = query_term, limit = limit_per_day, 
+								 begindate = dates[i], enddate = dates[i+1], 
+								 poolsize=20, lang='en')
+			queries.extend(query)
+		queries_tup = (queries, start_date, end_date)
+		return queries_tup
 
 
 def extract_tweets(queries_tup):
@@ -98,16 +98,16 @@ def extract_tweets(queries_tup):
 							start_date (datetime.date object), 
 							end_date (datetime.date object)		
 	'''
-    queries, start_date, end_date = queries_tup
-    tweets = []
-    for tweet in queries:
-        tweets.append({'date': tweet.timestamp, 'text': tweet.text, 
-                       'fullname': tweet.fullname, 'id': tweet.id, 
-                       'likes': tweet.likes, 'replies': tweet.replies,
-                       'retweets': tweet.retweets, 'url': tweet.url,
-                       'user': tweet.user})
-    tweets_tup = (tweets, start_date, end_date)
-    return tweets_tup
+	queries, start_date, end_date = queries_tup
+	tweets = []
+	for tweet in queries:
+		tweets.append({'date': tweet.timestamp, 'text': tweet.text, 
+					   'fullname': tweet.fullname, 'id': tweet.id, 
+					   'likes': tweet.likes, 'replies': tweet.replies,
+					   'retweets': tweet.retweets, 'url': tweet.url,
+					   'user': tweet.user})
+	tweets_tup = (tweets, start_date, end_date)
+	return tweets_tup
 
 
 def format_tweets_as_df(tweets_tup):
@@ -121,19 +121,19 @@ def format_tweets_as_df(tweets_tup):
 	Output:
 		df (dataframe): dataframe of tweets with tweet info
 	'''
-    tweets, start_date, end_date = tweets_tup
-    df = pd.DataFrame(tweets) 
-    df['month'] = df['date'].apply(lambda x : date(x.year, x.month, 1))
-    df = df.dropna()
-    df = df.drop_duplicates()
-    # check and drop values outside of queried range once more
-    # (b/c twitter_scraper is wonky):
-    df = df[df['date'] >= start_date]
-    df = df[df['date'] <= end_date]
-    return df
+	tweets, start_date, end_date = tweets_tup
+	df = pd.DataFrame(tweets) 
+	df['month'] = df['date'].apply(lambda x : date(x.year, x.month, 1))
+	df = df.dropna()
+	df = df.drop_duplicates()
+	# check and drop values outside of queried range once more
+	# (b/c twitter_scraper is wonky):
+	df = df[df['date'] >= start_date]
+	df = df[df['date'] <= end_date]
+	return df
 
 
-def go(query_term, limit_per_day, starting_date, ending_date, filename):
+def go(query_term, limit_per_day=40, starting_date, ending_date, filename):
 	'''
 	Scrapes for tweets, converts to dataframe, and writes to CSV file.
 
