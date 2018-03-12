@@ -25,4 +25,4 @@ and scraped and classified data that we did not use for trends/visuals.
   - build_toxicity_models.py: builds vectorizers and toxicity models
   - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file
       - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classfied tweets csv filename>"
-  - query.py: scrapes tweets given a query and outputs a scraped tweets CSV file
+  - query.py: scrapes tweets given a query term and outputs a scraped tweets CSV file
