@@ -155,7 +155,7 @@ def clean_and_merge(df1, df2, start_date, end_date):
 	df2 = df2[df2['date'] <= end_date]
 	df = pd.concat([df1, df2])
 	df = df.dropna()
-	df = df.drop_duplicates
+	df = df.drop_duplicates()
 	return df
 
 
