@@ -9,11 +9,12 @@ Visualize and track trends of toxicity for topics (e.g. abortion) and towards in
 
 
 OVERALL STRUCTURE:
-1) TwitterScraper:
-  - User provides query (query_term, search dates, output filename)
-  - Query tweets and export as a CSV
-2) Classifier:
-  - Read in the CSV as a pandas dataframe
+1) query.py:
+  - User provides query parameters: (query_term, search dates, output filename)
+  - Queries tweets and exports as a CSV
+2) classify_tweets.py:
+  - Reads in the CSV of raw tweets as a pandas dataframe
+  - Tweets are processed and 
   - Vectorize the text in each tweet
   - Use the 6 toxic models to identify levels of toxicity (Toxic, Severe Toxic, 
     Obscene, Threat, Insult, Identity Hate)
@@ -22,7 +23,13 @@ OVERALL STRUCTURE:
 
 
 INSTRUCTIONS:
-1) 
+1) Navigate to the 'toxic_tweets/toxic' directory and open an ipython terminal. Run query.py.
+
+2) Use the 'go' method with paramaters <query term, e.g. 'metoo'>, <start date, e.g. '01/01/2018'>, <end date, e.g. '01/30/2018'>, <filename, e.g. 'scraped_tweets'>.
+
+3) Quit the ipython terminal. In the command line, enter: "python classify_tweets.py <scraped tweets csv> <output classified tweets csv filename>".
+
+4) Visualize classified tweets using seaborn or plotly.
 
 
 How to install required libraries that you many not already have: 
@@ -76,7 +83,7 @@ and scraped and classified data that we did not use for trends/visuals.
   - Toxic Tweets.pdf: final presentation (PDF)
   - build_toxicity_models.py: builds vectorizers and toxicity models
   - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file
-      - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classfied tweets csv filename>"
+      - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classified tweets csv filename>"
   - query.py: scrapes tweets given a query term and outputs a scraped tweets CSV file
 
 All code was original code.
