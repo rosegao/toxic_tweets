@@ -1,7 +1,8 @@
-### toxic_tweets 
+  ### toxic_tweets 
 
 Computer Science with Applications 2 Project
 Team: Rose Gao, Andrea Koch, Ian Lyons
+
 
 Project Objective: Detect toxicity, insult, obscenity, and identity hate in tweets. 
 Visualize and track trends of toxicity for topics (e.g. abortion) and towards individuals (e.g. Clinton) throughout 2016-2018.
@@ -26,3 +27,6 @@ and scraped and classified data that we did not use for trends/visuals.
   - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file
       - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classfied tweets csv filename>"
   - query.py: scrapes tweets given a query term and outputs a scraped tweets CSV file
+
+All code was original code.
+See note in build_toxicity_models.py regarding code adapted from sklearn documentation.
