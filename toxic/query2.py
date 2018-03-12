@@ -1,4 +1,4 @@
-# File title:  query.py  
+# File title:  Query2.py  
 # Run query and return results in dataframe.  Our methods employ 
 # TwitterScraper (the scraping tool provided by Twitter), given a search topic (str), maximum 
 # number of tweets to scrape daily, and a start and end date
@@ -15,7 +15,7 @@ import csv
 
 
 def write_date(starting_date, ending_date):
-	#had to take a more hardcode approach because twitterscraper is wonky with dates
+	#
 	leap_years = [2008, 2012, 2016]
 	thirty_days = [4, 6, 9, 11]
 	thirty_one_days = [1, 3, 5, 7, 8, 10, 12] 
@@ -41,12 +41,6 @@ def write_date(starting_date, ending_date):
 		new_end_year = end_year
 
 		#input check
-		if (start_month > 12) or (end_month > 12):
-			check_statement = "INVALID MONTH"
-			return check_statement
-		if (start_day > 31) or (end_day > 31):
-			check_statement = "INVALID DAY"
-			return check_statement
 		if ((start_year > 2018) or (start_year < 2006)
 		or (end_year > 2018) or (end_year < 2006)):
 			check_statement = "INVALID YEAR: Query range is 2006-2018"
