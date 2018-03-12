@@ -26,6 +26,13 @@ INSTRUCTIONS:
 1) Navigate to the 'toxic_tweets/toxic' directory and open an ipython terminal. Run query.py.
 
 2) Use the 'go' method with paramaters <query term, e.g. 'metoo'>, <start date, e.g. '01/01/2018'>, <end date, e.g. '01/30/2018'>, <filename, e.g. 'scraped_tweets'>.
+	- query_term (str): search term(s) (all in one string)
+		- e.g. 'metoo'
+	- starting_date (str): date in the format 'MM/DD/YYYY'
+		- e.g. '01/01/2018'
+	- ending_date (str): date in the format 'MM/DD/YYYY'
+		- e.g. '01/30/2018'
+	- filename (str): string 
 
 3) Quit the ipython terminal. In the command line, enter: "python classify_tweets.py <scraped tweets csv> <output classified tweets csv filename>".
 
