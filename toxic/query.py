@@ -4,6 +4,16 @@
 # CS122 Final Project
 # Authors: Rose Gao, Andrea Koch, Ian Lyons
 
+###### IMPORTANT NOTE ######
+# TwitterScraper does a poor job of quering for all the days in a given 
+# date range.  TwitterScraper also limits the number of days that one can 
+# scrape; on Andrea and Ian's MacBooks, the module used up all of the 
+# computer resources resulting in an error.)
+#
+# Our fix was to query at each day.  The function twitter_query_over_time() 
+# should be limited to a search range of one month.  
+############################
+
 from twitterscraper import query_tweets
 from datetime import timedelta, date
 import pandas as pd
@@ -48,8 +58,8 @@ def twitter_query_over_time(query_term, limit_per_day, starting_date,
 	Inputs:
 		query_term (str): search term(s) (all in one string)
 		limit_per_day (int): max number of tweets to scrape per day 
-		starting_date (datetime.date object): start date
-		ending_date (datetime.date object): end date
+		starting_date (str): date in the format 'MM/DD/YYYY'
+		ending_date (str): date in the format 'MM/DD/YYYY'
 	Output:
 		queries_tup (tuple): contains queries (list of results), 
 							 start_date (datetime.date object), 
@@ -65,7 +75,7 @@ def twitter_query_over_time(query_term, limit_per_day, starting_date,
 	    		  in range((end_date - start_date).days + 1)])
 	    queries = []    
     	# enumerate through all pairs of dates until the 
-    	# second last day/last day pair:
+    	# penultimate and last day pair:
 	    for i, date in enumerate(dates[:-1]):
 	        query = query_tweets(query = query_term, limit = limit_per_day, 
 	                             begindate = dates[i], enddate = dates[i+1], 
@@ -85,7 +95,7 @@ def extract_tweets(queries_tup):
 						 end_date (datetime.date object)	
 	Output:
 		tweets_tup (tuple): contains tweets (list of tweet information), 
-							tart_date (datetime.date object), 
+							start_date (datetime.date object), 
 							end_date (datetime.date object)		
 	'''
     queries, start_date, end_date = queries_tup
@@ -106,7 +116,7 @@ def format_tweets_as_df(tweets_tup):
 
 	Input:
 		tweets_tup (tuple): contains tweets (list of tweet information), 
-							tart_date (datetime.date object), 
+							start_date (datetime.date object), 
 							end_date (datetime.date object)	
 	Output:
 		df (dataframe): dataframe of tweets with tweet info
