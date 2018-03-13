@@ -90,11 +90,13 @@ toxic Files:
   - Toxic Tweets.pdf: final presentation PDF (created by Andrea, Ian, and Rose)
   - build_toxicity_models.py: builds vectorizers and toxicity models (code by Rose)
   - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file
-    (Code by Andrea: clean_df method, code by Rose: classify_tweets, post_processing_and_export, and main methods)
+    (code by Andrea: clean_df method, code by Rose: classify_tweets, post_processing_and_export, and main methods)
       - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classified tweets csv filename>"
   - query.py (Rose Gao, Andrea Koch, Ian Lyons): scrapes tweets given a query term and outputs a scraped tweets CSV file
 
 ---
 
 CODE ATTRIBUTION:
-All code was original code, with the exception of the LemmaTokenizer class used in build_toxicity_models.py, which was borrowed directly from sklearn documentation: http://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes.
+All code was original code, with the exception of the LemmaTokenizer class used in build_toxicity_models.py, 
+which was borrowed directly from sklearn documentation: 
+http://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes.
