@@ -39,15 +39,15 @@ INSTRUCTIONS:
 
 4) Visualize classified tweets using seaborn or plotly.
 
-5) Conversely, run our demo with the README file in the demo folder.
+5) Conversely, instead of instructions 1-4, run our demo following the commands in the Demo_README file in the demo folder.
 
 
-How to install required libraries that you many not already have: 
-    - TwitterScraper: from the command line, run:  pip install twitterscraper
-    - Sklearn: from the command line, run:  pip install -U scikit-learn
-    - NLTK: For Mac/Unix: from the command line, run:  sudo pip install -U nltk
-            For Windows: from the command line, run:  pip install nltk
-    - Plotly: from the command line, run:  pip install plotly
+To install required libraries that you many not already have: 
+    - TwitterScraper: from the command line, run: pip install twitterscraper
+    - Sklearn: from the command line, run: pip install -U scikit-learn
+    - NLTK: For Mac/Unix: from the command line, run: sudo pip install -U nltk
+            For Windows: from the command line, run: pip install nltk
+    - Plotly: from the command line, run: pip install plotly
 
 ---
 
@@ -89,10 +89,10 @@ toxic Files:
   - Toxic Comment Data EDA.ipynb: toxic comment dataset exploratory data analysis (by Rose)
   - Toxic Tweets.pdf: final presentation PDF (created by Andrea, Ian, and Rose)
   - build_toxicity_models.py: builds vectorizers and toxicity models (code by Rose)
-  - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file
-    (code by Andrea: clean_df method, code by Rose: classify_tweets, post_processing_and_export, and main methods)
+  - classify_tweets.py: given a scraped tweets CSV file, outputs a classified tweets CSV file (code by Andrea: clean_df method, 
+    code by Rose: classify_tweets, post_processing_and_export, and main methods)
       - to run in command line: "python classify_tweets.py <scraped tweets csv> <output classified tweets csv filename>"
-  - query.py (Rose Gao, Andrea Koch, Ian Lyons): scrapes tweets given a query term and outputs a scraped tweets CSV file
+  - query.py: scrapes tweets given a query term and outputs a scraped tweets CSV file (code by Andrea, Ian, and Rose)
 
 ---
 
